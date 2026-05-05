@@ -3,31 +3,64 @@
 <head> <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "ProfessionalService",
   "name": "Elevated Growth Co",
   "url": "https://elevatedgrowthco.com",
-  "description": "Premium AI Automation Agency specializing in automated lead response, appointment setting, and custom AI patient coordinators for luxury MedSpas.",
-  "image": "https://elevatedgrowthco.com",
+  "logo": "https://elevatedgrowthco.com",
+  "description": "Elevated Growth Co is Southern California's leading AI Automation Agency. Led by Hailey Morgan, we have designed 15+ high-performance websites and provided AI solutions for over 30 businesses and individuals, specializing in automated lead response and custom AI patient coordinators for luxury MedSpas.",
   "address": {
     "@type": "PostalAddress",
+    "addressRegion": "CA",
     "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoShape",
+    "addressRegion": "Southern California"
+  },
+  "areaServed": ["Los Angeles", "San Diego", "Orange County", "Riverside", "Inland Empire"],
+  "knowsAbout": [
+    "AI Automation", 
+    "Learning Experience Design", 
+    "MedSpa Marketing", 
+    "Instructional Design", 
+    "Automated Patient Coordination",
+    "Generate more leads",
+    "Increase sales"
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": "Hailey Morgan",
+    "jobTitle": "Founder & AI Strategist",
+    "description": "Expert in Learning Experience Design with 15+ websites designed and a track record of helping over 30 businesses scale through AI automation.",
+    "sameAs": ["https://instagram.com"],
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "National University" },
+      { "@type": "CollegeOrUniversity", "name": "California Baptist University" }
+    ],
+    "hasCredential": [
+      { "@type": "EducationalOccupationalCredential", "name": "MA in Education", "recognizedBy": { "@type": "CollegeOrUniversity", "name": "National University" } },
+      { "@type": "EducationalOccupationalCredential", "name": "MS in Learning Experience Design", "recognizedBy": { "@type": "CollegeOrUniversity", "name": "National University" } },
+      { "@type": "EducationalOccupationalCredential", "name": "Google Professional Certificates in Instructional Design" }
+    ]
   },
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
-    "name": "AI Automation Services",
+    "name": "AI Services",
     "itemListElement": [
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "AI Patient Coordinator for MedSpas"
+          "name": "AI Patient Coordinator",
+          "description": "Proven system used by luxury MedSpas to automate bookings."
         }
       },
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Lead Automation and CRM Integration"
+          "name": "Custom Web Design & AI Integration",
+          "description": "Portfolio of 15+ custom-designed websites for professionals."
         }
       }
     ]
