@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Elevated Growth, Co. — AI Concierge Systems for Premium Med Spas</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Cinzel:wght@400;500;600;700;900&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+<style>
+/* ═══════════════════════════════════════════
+   DESIGN TOKENS — SANCTUARY LUXURY SYSTEM
+═══════════════════════════════════════════ */
+:root {
+  --black:        #080808;
+  --charcoal:     #111213;
+  --charcoal-2:   #161a1e;
+  --midnight:     #1A2B3C;
+  --midnight-lit: #223448;
+  --midnight-dim: #12202e;
+  --gold:         #D4AF37;
+  --gold-light:   #e8cc6a;
+  --gold-pale:    rgba(212,175,55,0.12);
+  --gold-glow:    rgba(212,175,55,0.22);
+  --white:        #F5F0E8;
+  --white-dim:    rgba(245,240,232,0.55);
+  --white-faint:  rgba(245,240,232,0.10);
+  --border-gold:  rgba(212,175,55,0.20);
+  --border-mid:   rgba(26,43,60,0.8);
+  --border-white: rgba(245,240,232,0.08);
+  --glass-mid:    rgba(26,43,60,0.35);
+  --glass-dark:   rgba(8,8,8,0.6);
+  --serif:        'Cormorant Garamond', Georgia, serif;
+  --display:      'Cinzel', 'Times New Roman', serif;
+  --mono:         'DM Mono', 'Courier New', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--serif);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── CUSTOM CURSOR ── */
+#cursor-dot {
+  width: 8px; height: 8px;
+  background: var(--gold);
+  border-radius: 50%;
+  position: fixed; pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: width .15s, height .15s;
+}
+#cursor-ring {
+  width: 32px; height: 32px;
+  border: 1px solid rgba(212,175,55,0.5);
+  border-radius: 50%;
+  position: fixed; pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%,-50%);
+  transition: all .06s linear;
+}
+body { cursor: none; }
+a, button { cursor: none; }
+
+/* ── NOISE TEXTURE ── */
+body::after {
+  content: '';
+  position: fixed; inset: 0; z-index: 1000; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity: 1;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+/* ── TYPOGRAPHY SYSTEM ── */
+.t-display {
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.t-kinetic {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(3.5rem, 10vw, 9.5rem);
+  line-height: .92;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+}
+.t-serif { font-family: var(--serif); }
+.t-mono  { font-family: var(--mono); font-size: .8em; letter-spacing: .06em; }
+.t-gold  { color: var(--gold); }
+.t-dim   { color: var(--white-dim); }
+
+.italic { font-style: italic; }
+
+/* ── GOLD GRADIENT TEXT ── */
+.gold-gradient {
+  background: linear-gradient(135deg, #c9a227 0%, #e8cc6a 45%, #D4AF37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── SECTION LABEL ── */
+.section-label {
+  font-family: var(--mono);
+  font-size: .7rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+.section-label::before {
+  content: '';
+  display: block;
+  width: 28px; height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+/* ── GOLD DIVIDER ── */
+.gold-rule {
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: .35;
+}
+.gold-rule-left {
+  width: 60px; height: 1px;
+  background: var(--gold);
+  opacity: .6;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  padding: 1.4rem 3rem;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid transparent;
+  transition: background .4s, border-color .4s, backdrop-filter .4s;
+}
+nav.scrolled {
+  background: rgba(8,8,8,0.85);
+  border-color: var(--border-gold);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.nav-logo {
+  font-family: var(--display);
+  font-size: .95rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; align-items: center; gap: 2.5rem; }
+.nav-link {
+  font-family: var(--mono);
+  font-size: .72rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--white-dim);
+  text-decoration: none;
+  transition: color .25s;
+}
+.nav-link:hover { color: var(--gold); }
+.nav-cta {
+  font-family: var(--mono);
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: .6rem 1.4rem;
+  cursor: none;
+  transition: background .25s, color .25s;
+  text-decoration: none;
+}
+.nav-cta:hover { background: var(--gold); color: var(--black); }
+
+/* ── BUTTONS ── */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: .75rem;
+  background: var(--gold);
+  color: var(--black);
+  font-family: var(--display);
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  padding: 1.1rem 2.4rem;
+  text-decoration: none;
+  border: none;
+  cursor: none;
+  position: relative;
+  overflow: hidden;
+  transition: transform .3s, box-shadow .3s;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+  opacity: 0;
+  transition: opacity .3s;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(212,175,55,0.35); }
+.btn-primary:hover::before { opacity: 1; }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: .75rem;
+  background: transparent;
+  color: var(--white);
+  font-family: var(--mono);
+  font-size: .72rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 1.1rem 2.4rem;
+  text-decoration: none;
+  border: 1px solid var(--border-white);
+  cursor: none;
+  transition: border-color .3s, color .3s;
+}
+.btn-ghost:hover { border-color: rgba(245,240,232,0.3); color: var(--white); }
+
+/* ── GLASS CARDS ── */
+.glass-card {
+  background: var(--glass-mid);
+  border: 1px solid var(--border-gold);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  position: relative;
+  overflow: hidden;
+  transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s, border-color .4s;
+}
+.glass-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: .4;
+}
+.glass-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 80px rgba(212,175,55,0.12), 0 0 0 1px rgba(212,175,55,0.2);
+  border-color: rgba(212,175,55,0.4);
+}
+
+.midnight-card {
+  background: linear-gradient(135deg, var(--midnight-dim) 0%, var(--midnight) 100%);
+  border: 1px solid var(--border-mid);
+  position: relative;
+  overflow: hidden;
+  transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s;
+}
+.midnight-card::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity .4s;
+}
+.midnight-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(26,43,60,0.6); }
+.midnight-card:hover::after { opacity: .7; }
+
+/* ── ORNAMENT ── */
+.ornament {
+  font-family: var(--display);
+  font-size: 1.4rem;
+  color: var(--gold);
+  opacity: .4;
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);
+}
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);
+}
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+.reveal-delay-4 { transition-delay: .4s; }
+
+/* ── HERO SPECIFIC ── */
+.hero-bg {
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(26,43,60,0.55) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 80% 80%, rgba(212,175,55,0.06) 0%, transparent 60%),
+    var(--black);
+}
+.hero-grid-line {
+  position: absolute;
+  background: rgba(212,175,55,0.04);
+}
+
+/* floating badge */
+.float-badge {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(212,175,55,0.08);
+  border: 1px solid var(--border-gold);
+  padding: .45rem 1rem;
+  font-family: var(--mono);
+  font-size: .68rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  animation: badge-pulse 3s ease-in-out infinite;
+}
+@keyframes badge-pulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(212,175,55,0); }
+  50% { box-shadow: 0 0 20px rgba(212,175,55,0.15); }
+}
+.badge-dot {
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  animation: dot-blink 2s ease-in-out infinite;
+}
+@keyframes dot-blink {
+  0%,100% { opacity: 1; } 50% { opacity: .3; }
+}
+
+/* hero marquee */
+.marquee-wrap {
+  overflow: hidden;
+  border-top: 1px solid var(--border-gold);
+  border-bottom: 1px solid var(--border-gold);
+  padding: .9rem 0;
+  background: rgba(212,175,55,0.03);
+}
+.marquee-track {
+  display: flex;
+  gap: 0;
+  animation: marquee 30s linear infinite;
+  white-space: nowrap;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-item {
+  font-family: var(--mono);
+  font-size: .7rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: .6;
+  padding: 0 2.5rem;
+  display: inline-flex; align-items: center; gap: 1.2rem;
+}
+.marquee-item::after {
+  content: '✦';
+  opacity: .5;
+  font-size: .6em;
+}
+
+/* ── WEALTH GAP NUMBER CARDS ── */
+.loss-number {
+  font-family: var(--display);
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--gold);
+}
+.loss-label {
+  font-family: var(--mono);
+  font-size: .65rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--white-dim);
+  margin-top: .3rem;
+}
+
+/* ── ROI CALCULATOR VISUAL ── */
+.calc-bar {
+  height: 6px;
+  background: var(--glass-mid);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+.calc-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--midnight), var(--gold));
+  width: 0%;
+  transition: width 1.5s cubic-bezier(.16,1,.3,1);
+}
+.calc-bar-fill.animate { width: var(--w); }
+
+.funnel-step {
+  display: flex; align-items: center; gap: 1.2rem;
+}
+.funnel-num {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--gold);
+  min-width: 3.5rem;
+}
+.funnel-label {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--white-dim);
+}
+.funnel-delta {
+  font-family: var(--mono);
+  font-size: .68rem;
+  letter-spacing: .1em;
+  color: var(--gold);
+  margin-left: auto;
+  opacity: .75;
+}
+
+/* ── TESTIMONIAL CARDS ── */
+.testi-card {
+  background: var(--charcoal-2);
+  border: 1px solid var(--border-white);
+  padding: 2.5rem;
+  position: relative;
+  transition: border-color .3s, box-shadow .3s;
+}
+.testi-card:hover {
+  border-color: var(--border-gold);
+  box-shadow: 0 12px 48px rgba(212,175,55,0.08);
+}
+.testi-quote {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--white);
+  margin-bottom: 1.5rem;
+}
+.testi-author {
+  font-family: var(--mono);
+  font-size: .68rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.testi-role { color: var(--white-dim); }
+.testi-mark {
+  position: absolute; top: 1.5rem; right: 2rem;
+  font-family: var(--display);
+  font-size: 5rem;
+  color: var(--gold);
+  opacity: .07;
+  line-height: 1;
+  font-weight: 900;
+}
+
+/* ── STAT STRIP ── */
+.stat-item {
+  text-align: center;
+  padding: 2rem;
+  border-right: 1px solid var(--border-white);
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-family: var(--display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  color: var(--gold);
+}
+.stat-desc {
+  font-family: var(--mono);
+  font-size: .65rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--white-dim);
+  margin-top: .4rem;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--charcoal);
+  border-top: 1px solid var(--border-gold);
+  position: relative;
+  overflow: hidden;
+}
+footer::before {
+  content: '';
+  position: absolute;
+  top: -200px; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(ellipse, rgba(212,175,55,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── SCARCITY BADGE ── */
+.scarcity {
+  display: inline-flex; align-items: center; gap: .6rem;
+  background: rgba(212,175,55,0.06);
+  border: 1px solid rgba(212,175,55,0.3);
+  padding: .5rem 1.2rem;
+  font-family: var(--mono);
+  font-size: .68rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.scarcity-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #ef4444;
+  animation: dot-blink 1.5s ease-in-out infinite;
+}
+
+/* ── SOLUTION FEATURE ROW ── */
+.feature-row {
+  display: flex; align-items: flex-start; gap: 1.5rem;
+  padding: 1.8rem 0;
+  border-bottom: 1px solid var(--border-white);
+  transition: padding-left .3s;
+}
+.feature-row:last-child { border-bottom: none; }
+.feature-row:hover { padding-left: .5rem; }
+.feature-icon-wrap {
+  width: 44px; height: 44px;
+  background: var(--gold-pale);
+  border: 1px solid var(--border-gold);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.feature-icon-wrap svg { width: 18px; height: 18px; color: var(--gold); stroke: var(--gold); }
+.feature-title {
+  font-family: var(--display);
+  font-size: .9rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: .3rem;
+}
+.feature-desc {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--white-dim);
+  line-height: 1.6;
+}
+
+/* ── DECORATIVE ELEMENTS ── */
+.corner-ornament {
+  position: absolute;
+  width: 40px; height: 40px;
+  border-color: rgba(212,175,55,0.3);
+  border-style: solid;
+}
+.corner-ornament.tl { top: 12px; left: 12px; border-width: 1px 0 0 1px; }
+.corner-ornament.tr { top: 12px; right: 12px; border-width: 1px 1px 0 0; }
+.corner-ornament.bl { bottom: 12px; left: 12px; border-width: 0 0 1px 1px; }
+.corner-ornament.br { bottom: 12px; right: 12px; border-width: 0 1px 1px 0; }
+
+/* ── VERTICAL TEXT ── */
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-family: var(--mono);
+  font-size: .62rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: .4;
+  transform: rotate(180deg);
+}
+
+/* ── GRID BACKGROUND LINES ── */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(212,175,55,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212,175,55,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ── BENTO MOCK ── */
+.bento-img-mock {
+  background: linear-gradient(135deg, var(--midnight-dim) 0%, var(--charcoal-2) 100%);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--white-dim);
+  font-family: var(--mono);
+  font-size: .65rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  border: 1px dashed rgba(212,175,55,0.15);
+  position: relative;
+  overflow: hidden;
+}
+.bento-img-mock::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(212,175,55,0.04) 0%, transparent 60%);
+}
+
+/* MOBILE NAV */
+@media (max-width: 768px) {
+  nav { padding: 1.2rem 1.5rem; }
+  .nav-links { display: none; }
+  .kinetic-headline { font-size: clamp(2.8rem, 14vw, 5rem); }
+  .t-kinetic { font-size: clamp(2.5rem, 12vw, 5rem); }
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════ -->
+<nav id="nav">
+  <div class="nav-logo">Elevated Growth<span>,</span> Co.</div>
+  <div class="nav-links">
+    <a href="#gap" class="nav-link">The Problem</a>
+    <a href="#solution" class="nav-link">The System</a>
+    <a href="#roi" class="nav-link">ROI</a>
+    <a href="#trust" class="nav-link">Results</a>
+    <a href="#audit" class="nav-cta">Free Audit</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     SECTION 1 — HERO
+═══════════════════════════════════════════ -->
+<section class="hero-bg relative min-h-screen flex flex-col justify-center overflow-hidden bg-grid" style="padding-top: 7rem; padding-bottom: 4rem;">
+
+  <!-- Decorative vertical lines -->
+  <div class="absolute top-0 bottom-0" style="left: 3rem; width: 1px; background: linear-gradient(to bottom, transparent, rgba(212,175,55,0.12), transparent);"></div>
+  <div class="absolute top-0 bottom-0" style="right: 3rem; width: 1px; background: linear-gradient(to bottom, transparent, rgba(212,175,55,0.12), transparent);"></div>
+
+  <!-- Large background text -->
+  <div class="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+    <span style="font-family: var(--display); font-size: 22vw; font-weight: 900; color: rgba(26,43,60,0.18); letter-spacing: .04em; white-space: nowrap; user-select: none;">CONCIERGE</span>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-8 w-full">
+
+    <!-- Badge -->
+    <div class="reveal" style="margin-bottom: 2.5rem;">
+      <div class="float-badge" style="display: inline-flex;">
+        <span class="badge-dot"></span>
+        AI-Powered Systems For Elite Med Spas
+      </div>
+    </div>
+
+    <!-- Kinetic Headline -->
+    <div class="reveal reveal-delay-1" style="margin-bottom: 1.5rem;">
+      <h1 class="t-kinetic" style="max-width: 1000px;">
+        The Concierge<br/>
+        <span class="gold-gradient">That Never</span><br/>
+        Sleeps.
+      </h1>
+    </div>
+
+    <div class="reveal reveal-delay-2" style="margin-bottom: 3rem;">
+      <h2 class="t-kinetic" style="color: var(--white-dim); font-size: clamp(2rem, 5.5vw, 5.5rem);">
+        The Revenue That<br/>Never Stops.
+      </h2>
+    </div>
+
+    <!-- Divider + sub-copy row -->
+    <div class="reveal reveal-delay-3" style="margin-bottom: 3rem;">
+      <div class="gold-rule" style="margin-bottom: 2rem; max-width: 700px;"></div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 780px;">
+        <p style="font-family: var(--serif); font-size: 1.2rem; color: var(--white); line-height: 1.65; font-style: italic;">
+          We don't just build chatbots — we engineer 24/7 AI-driven Concierge Systems that automate lead capture and maximize wealth for premium med spas.
+        </p>
+        <div>
+          <div class="section-label" style="margin-bottom: 1rem;">Your competitive edge</div>
+          <p style="font-family: var(--mono); font-size: .78rem; color: var(--white-dim); letter-spacing: .04em; line-height: 1.8;">
+            While your competition sleeps, your AI Concierge is booking appointments, qualifying leads, and converting hesitant prospects — automatically, at scale, around the clock.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTAs -->
+    <div class="reveal reveal-delay-4" style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+      <a href="#audit" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        Start Your Free Audit
+      </a>
+      <a href="#roi" class="btn-ghost">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+        See The ROI Math
+      </a>
+    </div>
+
+    <!-- Micro-stat row -->
+    <div class="reveal" style="margin-top: 4rem; display: flex; gap: 3rem; flex-wrap: wrap;">
+      <div>
+        <span style="font-family: var(--display); font-size: 1.5rem; font-weight: 700; color: var(--gold);">40%+</span>
+        <span style="font-family: var(--mono); font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; color: var(--white-dim); margin-left: .75rem;">Lead-to-booking rate</span>
+      </div>
+      <div>
+        <span style="font-family: var(--display); font-size: 1.5rem; font-weight: 700; color: var(--gold);">2 min</span>
+        <span style="font-family: var(--mono); font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; color: var(--white-dim); margin-left: .75rem;">Avg. AI response time</span>
+      </div>
+      <div>
+        <span style="font-family: var(--display); font-size: 1.5rem; font-weight: 700; color: var(--gold);">24/7</span>
+        <span style="font-family: var(--mono); font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; color: var(--white-dim); margin-left: .75rem;">Autonomous operation</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Vertical side label -->
+  <div class="absolute right-8 bottom-12 hidden lg:flex">
+    <span class="vertical-text">Elevated Growth Co. — Est. 2024</span>
+  </div>
+</section>
+
+<!-- Marquee -->
+<div class="marquee-wrap">
+  <div class="marquee-track" id="marquee">
+    <span class="marquee-item">24/7 Lead Capture</span>
+    <span class="marquee-item">Automated Booking</span>
+    <span class="marquee-item">Patient Qualification</span>
+    <span class="marquee-item">Revenue Maximization</span>
+    <span class="marquee-item">AI Concierge Systems</span>
+    <span class="marquee-item">Med Spa Growth</span>
+    <span class="marquee-item">Wealth Engineering</span>
+    <span class="marquee-item">Zero Missed Leads</span>
+    <span class="marquee-item">24/7 Lead Capture</span>
+    <span class="marquee-item">Automated Booking</span>
+    <span class="marquee-item">Patient Qualification</span>
+    <span class="marquee-item">Revenue Maximization</span>
+    <span class="marquee-item">AI Concierge Systems</span>
+    <span class="marquee-item">Med Spa Growth</span>
+    <span class="marquee-item">Wealth Engineering</span>
+    <span class="marquee-item">Zero Missed Leads</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SECTION 2 — THE WEALTH GAP
+═══════════════════════════════════════════ -->
+<section id="gap" style="padding: 8rem 0; background: var(--charcoal);">
+  <div class="max-w-7xl mx-auto px-8">
+
+    <div class="reveal" style="margin-bottom: 1rem;">
+      <div class="section-label">The Wealth Gap</div>
+    </div>
+    <div class="reveal reveal-delay-1" style="margin-bottom: 1.5rem;">
+      <h2 style="font-family: var(--display); font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; line-height: 1.05;">
+        Your Competitors Are<br/>
+        <span class="gold-gradient">Stealing Your Revenue</span>
+      </h2>
+    </div>
+    <div class="reveal reveal-delay-2" style="max-width: 640px; margin-bottom: 4rem;">
+      <p style="font-family: var(--serif); font-size: 1.15rem; color: var(--white-dim); font-style: italic;">
+        The med spa market is unforgiving. Every unanswered inquiry, every slow response, every missed follow-up is money transferred directly to a competitor willing to act faster.
+      </p>
+    </div>
+
+    <!-- 3 Loss Cards -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.5px; background: rgba(212,175,55,0.12);">
+
+      <div class="glass-card reveal reveal-delay-1" style="padding: 2.8rem; background: var(--charcoal-2);">
+        <div class="corner-ornament tl"></div>
+        <div class="corner-ornament br"></div>
+        <div style="margin-bottom: 1.5rem;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5" style="opacity:.8;"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+        </div>
+        <div class="loss-number">67%</div>
+        <div class="loss-label" style="margin-bottom: 1.2rem;">of leads lost to slow response</div>
+        <div class="gold-rule-left" style="margin-bottom: 1.2rem;"></div>
+        <p style="font-family: var(--serif); font-size: 1rem; color: var(--white-dim); line-height: 1.65;">
+          Prospects who don't hear back within 5 minutes are 21× more likely to book with your competitor. Your front desk simply cannot compete with that speed — no human can.
+        </p>
+      </div>
+
+      <div class="glass-card reveal reveal-delay-2" style="padding: 2.8rem; background: linear-gradient(135deg, var(--midnight-dim) 0%, var(--charcoal-2) 100%);">
+        <div class="corner-ornament tl"></div>
+        <div class="corner-ornament br"></div>
+        <div style="margin-bottom: 1.5rem;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5" style="opacity:.8;"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <div class="loss-number">$42K</div>
+        <div class="loss-label" style="margin-bottom: 1.2rem;">avg. annual revenue left uncaptured</div>
+        <div class="gold-rule-left" style="margin-bottom: 1.2rem;"></div>
+        <p style="font-family: var(--serif); font-size: 1rem; color: var(--white-dim); line-height: 1.65;">
+          The average mid-size med spa loses $42,000 per year in missed and unqualified leads alone — revenue that exists, that patients are willing to spend, that simply evaporates due to operational gaps.
+        </p>
+      </div>
+
+      <div class="glass-card reveal reveal-delay-3" style="padding: 2.8rem; background: var(--charcoal-2);">
+        <div class="corner-ornament tl"></div>
+        <div class="corner-ornament br"></div>
+        <div style="margin-bottom: 1.5rem;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5" style="opacity:.8;"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="loss-number">3×</div>
+        <div class="loss-label" style="margin-bottom: 1.2rem;">patient LTV when follow-ups are automated</div>
+        <div class="gold-rule-left" style="margin-bottom: 1.2rem;"></div>
+        <p style="font-family: var(--serif); font-size: 1rem; color: var(--white-dim); line-height: 1.65;">
+          Your existing patient database is a dormant asset. Manual reactivation campaigns convert at 4%. AI-driven personalized follow-ups convert at 18–24% — without a single additional ad dollar spent.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Bottom emphasis -->
+    <div class="reveal" style="margin-top: 3rem; text-align: center;">
+      <p style="font-family: var(--display); font-size: 1.1rem; letter-spacing: .08em; text-transform: uppercase; color: var(--white-dim);">
+        This Is Not A Design Problem. <span style="color: var(--gold);">It's A Systems Problem.</span>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SECTION 3 — THE AI CONCIERGE SOLUTION
+═══════════════════════════════════════════ -->
+<section id="solution" style="padding: 8rem 0; background: var(--black);">
+  <div class="max-w-7xl mx-auto px-8">
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;" class="lg:grid-cols-2">
+
+      <!-- Left column -->
+      <div>
+        <div class="reveal" style="margin-bottom: 1rem;">
+          <div class="section-label">The Solution</div>
+        </div>
+        <div class="reveal reveal-delay-1" style="margin-bottom: 2rem;">
+          <h2 style="font-family: var(--display); font-size: clamp(2rem, 4.5vw, 3.8rem); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; line-height: 1.08;">
+            The AI Concierge<br/>
+            <span class="gold-gradient">System</span>
+          </h2>
+        </div>
+        <div class="reveal reveal-delay-2" style="margin-bottom: 2.5rem;">
+          <p style="font-family: var(--serif); font-size: 1.15rem; color: var(--white); line-height: 1.7; font-style: italic;">
+            An intelligent, always-on front desk that handles every patient interaction with five-star precision — qualifying, educating, scheduling, and following up without ever clocking out.
+          </p>
+        </div>
+        <div class="reveal reveal-delay-2" style="margin-bottom: 3rem;">
+          <p style="font-family: var(--serif); font-size: 1rem; color: var(--white-dim); line-height: 1.75;">
+            Your staff's talent belongs in the treatment room, building patient relationships, driving referrals, and delivering exceptional experiences — not answering the same intake questions at 11pm.
+          </p>
+        </div>
+
+        <!-- Feature rows -->
+        <div class="reveal reveal-delay-3">
+
+          <div class="feature-row">
+            <div class="feature-icon-wrap">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div>
+              <div class="feature-title">Instant Lead Qualification</div>
+              <div class="feature-desc">AI identifies high-intent prospects and prioritizes them for your team — filtering time-wasters so your closers only speak to ready buyers.</div>
+            </div>
+          </div>
+
+          <div class="feature-row">
+            <div class="feature-icon-wrap">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div>
+              <div class="feature-title">Autonomous 24/7 Booking</div>
+              <div class="feature-desc">Prospects book consultations at 2am on a Sunday with zero friction. Your calendar fills while you sleep. No missed windows, ever.</div>
+            </div>
+          </div>
+
+          <div class="feature-row">
+            <div class="feature-icon-wrap">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.8"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            </div>
+            <div>
+              <div class="feature-title">Revenue Reactivation Engine</div>
+              <div class="feature-desc">Automated, personalized outreach to dormant patients with precision timing — bringing back lapsed revenue without additional ad spend.</div>
+            </div>
+          </div>
+
+          <div class="feature-row">
+            <div class="feature-icon-wrap">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <div>
+              <div class="feature-title">White-Glove Patient Experience</div>
+              <div class="feature-desc">Personalized follow-ups, pre-care instructions, post-treatment check-ins — all automated to feel handcrafted and premium, every single time.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right column — visual system diagram -->
+      <div class="reveal-right" style="position: sticky; top: 8rem;">
+        <div class="midnight-card" style="padding: 2.5rem; border-radius: 0;">
+          <div class="corner-ornament tl"></div>
+          <div class="corner-ornament tr"></div>
+          <div class="corner-ornament bl"></div>
+          <div class="corner-ornament br"></div>
+
+          <div style="text-align: center; margin-bottom: 2rem;">
+            <div class="section-label" style="justify-content: center;">System Architecture</div>
+          </div>
+
+          <!-- System nodes -->
+          <div style="position: relative;">
+            <!-- Central node -->
+            <div style="text-align: center; margin-bottom: 2rem;">
+              <div style="display: inline-flex; flex-direction: column; align-items: center; gap: .6rem;">
+                <div style="width: 70px; height: 70px; background: var(--gold-pale); border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center;">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+                </div>
+                <span style="font-family: var(--display); font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold);">AI Core</span>
+              </div>
+            </div>
+
+            <!-- Surrounding nodes -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem;">
+              <div style="background: rgba(26,43,60,0.6); border: 1px solid var(--border-mid); padding: 1.2rem; text-align: center;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5" style="margin: 0 auto .5rem; display: block; opacity: .7;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.27 12 19.79 19.79 0 0 1 1.17 3.45 2 2 0 0 1 3.14 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.49a16 16 0 0 0 5.39 5.39"/></svg>
+                <div style="font-family: var(--mono); font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--white-dim);">Inbound Calls</div>
+              </div>
+              <div style="background: rgba(26,43,60,0.6); border: 1px solid var(--border-mid); padding: 1.2rem; text-align: center;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5" style="margin: 0 auto .5rem; display: block; opacity: .7;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <div style="font-family: var(--mono); font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--white-dim);">SMS & Chat</div>
+              </div>
+              <div style="background: rgba(26,43,60,0.6); border: 1px solid var(--border-mid); padding: 1.2rem; text-align: center;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5" style="margin: 0 auto .5rem; display: block; opacity: .7;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <div style="font-family: var(--mono); font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--white-dim);">Auto Scheduling</div>
+              </div>
+              <div style="background: rgba(26,43,60,0.6); border: 1px solid var(--border-mid); padding: 1.2rem; text-align: center;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5" style="margin: 0 auto .5rem; display: block; opacity: .7;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <div style="font-family: var(--mono); font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--white-dim);">Email Sequences</div>
+              </div>
+            </div>
+
+            <!-- Bottom output -->
+            <div style="background: linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.04)); border: 1px solid var(--border-gold); padding: 1.5rem; text-align: center;">
+              <div style="font-family: var(--display); font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: .4rem;">Output</div>
+              <div style="font-family: var(--serif); font-size: 1.4rem; color: var(--white); font-style: italic;">Booked Appointments &amp; Revenue</div>
+            </div>
+
+            <!-- Status indicators -->
+            <div style="margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+              <div style="display: flex; align-items: center; gap: .4rem; font-family: var(--mono); font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--white-dim);">
+                <span style="width: 5px; height: 5px; background: #22c55e; border-radius: 50; display: inline-block; animation: dot-blink 2s ease-in-out infinite;"></span> System Active
+              </div>
+              <div style="display: flex; align-items: center; gap: .4rem; font-family: var(--mono); font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--white-dim);">
+                <span style="width: 5px; height: 5px; background: var(--gold); border-radius: 50%; display: inline-block; animation: dot-blink 2.5s ease-in-out infinite;"></span> Lead Capture Running
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SECTION 4 — ROI CALCULATOR PREVIEW
+═══════════════════════════════════════════ -->
+<section id="roi" style="padding: 8rem 0; background: var(--charcoal); position: relative; overflow: hidden;">
+
+  <!-- BG accent -->
+  <div style="position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(26,43,60,0.6), transparent 70%); pointer-events: none;"></div>
+
+  <div class="max-w-7xl mx-auto px-8">
+
+    <div class="reveal" style="margin-bottom: 1rem;">
+      <div class="section-label">ROI Projection</div>
+    </div>
+    <div class="reveal reveal-delay-1" style="margin-bottom: 1.5rem;">
+      <h2 style="font-family: var(--display); font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; line-height: 1.05;">
+        What 100 Leads<br/>
+        <span class="gold-gradient">Actually Produces</span>
+      </h2>
+    </div>
+    <div class="reveal reveal-delay-2" style="max-width: 600px; margin-bottom: 5rem;">
+      <p style="font-family: var(--serif); font-size: 1.1rem; color: var(--white-dim); font-style: italic; line-height: 1.7;">
+        Here is the math your current setup ignores — and what the AI Concierge System is engineered to capture at every stage of your patient funnel.
+      </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
+
+      <!-- Funnel Visual -->
+      <div class="reveal-left">
+        <div class="midnight-card" style="padding: 2.8rem;">
+
+          <div style="margin-bottom: 2.5rem;">
+            <div class="section-label" style="margin-bottom: .5rem;">Your Current Funnel</div>
+            <div style="font-family: var(--mono); font-size: .65rem; color: var(--white-dim); letter-spacing: .06em;">Without AI Automation</div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 1.4rem;">
+            <div class="funnel-step">
+              <div class="funnel-num">100</div>
+              <div style="flex: 1;">
+                <div style="font-family: var(--serif); font-size: .95rem; color: var(--white-dim); margin-bottom: .4rem;">Inbound Leads</div>
+                <div class="calc-bar"><div class="calc-bar-fill" style="--w: 100%; background: linear-gradient(90deg, var(--midnight), rgba(212,175,55,0.4));"></div></div>
+              </div>
+              <div class="funnel-delta">100%</div>
+            </div>
+            <div class="funnel-step">
+              <div class="funnel-num" style="color: var(--white-dim);">38</div>
+              <div style="flex: 1;">
+                <div style="font-family: var(--serif); font-size: .95rem; color: var(--white-dim); margin-bottom: .4rem;">Reached (slow response)</div>
+                <div class="calc-bar"><div class="calc-bar-fill" style="--w: 38%; background: linear-gradient(90deg, var(--midnight), rgba(212,175,55,0.25));"></div></div>
+              </div>
+              <div class="funnel-delta" style="color: #ef4444;">−62%</div>
+            </div>
+            <div class="funnel-step">
+              <div class="funnel-num" style="color: var(--white-dim);">14</div>
+              <div style="flex: 1;">
+                <div style="font-family: var(--serif); font-size: .95rem; color: var(--white-dim); margin-bottom: .4rem;">Qualified &amp; Booked</div>
+                <div class="calc-bar"><div class="calc-bar-fill" style="--w: 14%; background: linear-gradient(90deg, var(--midnight), rgba(212,175,55,0.15));"></div></div>
+              </div>
+              <div class="funnel-delta" style="color: #ef4444;">−62%</div>
+            </div>
+            <div style="background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.2); padding: 1rem 1.2rem; margin-top: .5rem;">
+              <div style="font-family: var(--mono); font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: #ef4444; margin-bottom: .2rem;">Revenue Gap</div>
+              <div style="font-family: var(--display); font-size: 1.8rem; font-weight: 700; color: #ef4444;">86 Leads Lost</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Funnel -->
+      <div class="reveal-right">
+        <div class="glass-card" style="padding: 2.8rem;">
+          <div class="corner-ornament tl"></div>
+          <div class="corner-ornament br"></div>
+
+          <div style="margin-bottom: 2.5rem;">
+            <div class="section-label" style="margin-bottom: .5rem;">AI Concierge Funnel</div>
+            <div style="font-family: var(--mono); font-size: .65rem; color: var(--gold); letter-spacing: .06em;">With Elevated Growth Systems</div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 1.4rem;">
+            <div class="funnel-step">
+              <div class="funnel-num">100</div>
+              <div style="flex: 1;">
+                <div style="font-family: var(--serif); font-size: .95rem; color: var(--white-dim); margin-bottom: .4rem;">Inbound Leads</div>
+                <div class="calc-bar"><div class="calc-bar-fill" style="--w: 100%;"></div></div>
+              </div>
+              <div class="funnel-delta">100%</div>
+            </div>
+            <div class="funnel-step">
+              <div class="funnel-num">97</div>
+              <div style="flex: 1;">
+                <div style="font-family: var(--serif); font-size: .95rem; color: var(--white-dim); margin-bottom: .4rem;">Engaged (instant AI response)</div>
+                <div class="calc-bar"><div class="calc-bar-fill" style="--w: 97%;"></div></div>
+              </div>
+              <div class="funnel-delta" style="color: #22c55e;">97%</div>
+            </div>
+            <div class="funnel-step">
+              <div class="funnel-num">72</div>
+              <div style="flex: 1;">
+                <div style="font-family: var(--serif); font-size: .95rem; color: var(--white-dim); margin-bottom: .4rem;">Qualified by AI</div>
+                <div class="calc-bar"><div class="calc-bar-fill" style="--w: 72%;"></div></div>
+              </div>
+              <div class="funnel-delta" style="color: #22c55e;">72%</div>
+            </div>
+            <div class="funnel-step">
+              <div class="funnel-num">43</div>
+              <div style="flex: 1;">
+                <div style="font-family: var(--serif); font-size: .95rem; color: var(--white-dim); margin-bottom: .4rem;">Booked Appointments</div>
+                <div class="calc-bar"><div class="calc-bar-fill" style="--w: 43%;"></div></div>
+              </div>
+              <div class="funnel-delta" style="color: #22c55e;">43%</div>
+            </div>
+            <div style="background: var(--gold-pale); border: 1px solid var(--border-gold); padding: 1rem 1.2rem; margin-top: .5rem;">
+              <div style="font-family: var(--mono); font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-bottom: .2rem;">Revenue Captured</div>
+              <div style="font-family: var(--display); font-size: 1.8rem; font-weight: 700; color: var(--gold);">3× More Booked Patients</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom math callout -->
+    <div class="reveal" style="margin-top: 4rem; padding: 2.5rem; background: var(--gold-pale); border: 1px solid var(--border-gold); text-align: center;">
+      <p style="font-family: var(--serif); font-size: 1.4rem; font-style: italic; color: var(--white); margin-bottom: .8rem;">
+        At an average treatment value of <strong style="color: var(--gold);">$800</strong>, that conversion gap represents
+      </p>
+      <p style="font-family: var(--display); font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; color: var(--gold); letter-spacing: .04em;">
+        $23,200+ Per Month In Recoverable Revenue
+      </p>
+      <p style="font-family: var(--mono); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--white-dim); margin-top: .8rem;">From the same lead volume you're already generating today</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     STAT STRIP
+═══════════════════════════════════════════ -->
+<div style="background: var(--midnight-dim); border-top: 1px solid var(--border-mid); border-bottom: 1px solid var(--border-mid);">
+  <div class="max-w-7xl mx-auto">
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr);">
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-num">2min</div>
+        <div class="stat-desc">Average AI Response Time</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-num">43%</div>
+        <div class="stat-desc">Lead-to-Booking Rate</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <div class="stat-num">$0</div>
+        <div class="stat-desc">Additional Ad Spend Needed</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-4">
+        <div class="stat-num">24/7</div>
+        <div class="stat-desc">Autonomous Operation</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SECTION 5 — TRUST / TESTIMONIALS
+═══════════════════════════════════════════ -->
+<section id="trust" style="padding: 8rem 0; background: var(--black);">
+  <div class="max-w-7xl mx-auto px-8">
+
+    <div class="reveal" style="margin-bottom: 1rem;">
+      <div class="section-label">Direct ROI Results</div>
+    </div>
+    <div class="reveal reveal-delay-1" style="margin-bottom: 1.5rem;">
+      <h2 style="font-family: var(--display); font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; line-height: 1.05;">
+        What Owners Say When<br/>
+        <span class="gold-gradient">Revenue Stops Leaking</span>
+      </h2>
+    </div>
+    <div class="reveal reveal-delay-2" style="margin-bottom: 4rem;">
+      <p style="font-family: var(--serif); font-size: 1.1rem; color: var(--white-dim); font-style: italic;">Not promises — documented outcomes from med spa owners who made the switch.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+
+      <div class="testi-card reveal reveal-delay-1">
+        <div class="testi-mark">"</div>
+        <p class="testi-quote">"Within 60 days of deploying the AI Concierge, we recaptured 34 previously lost leads. That's over $27,000 in revenue we would have simply never seen. I stopped thinking of this as a technology expense the moment I saw the first month's report."</p>
+        <div class="gold-rule-left" style="margin-bottom: 1rem;"></div>
+        <div class="testi-author">Dr. Melissa Fontaine</div>
+        <div class="testi-author testi-role">Founder, Lumière Aesthetic Medicine — Scottsdale, AZ</div>
+        <div style="margin-top: 1rem; font-family: var(--mono); font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); background: var(--gold-pale); display: inline-block; padding: .3rem .7rem;">+$27,000 Month 2</div>
+      </div>
+
+      <div class="testi-card reveal reveal-delay-2">
+        <div class="testi-mark">"</div>
+        <p class="testi-quote">"We were spending $8,000/month on ads and converting at 9%. Same ad spend, same traffic — the AI Concierge took us to 41% conversion in 90 days. My front desk team went from firefighting to relationship building. Completely different practice."</p>
+        <div class="gold-rule-left" style="margin-bottom: 1rem;"></div>
+        <div class="testi-author">Marcus D. Chen, NP</div>
+        <div class="testi-author testi-role">Clinical Director, Revive Med Spa — Austin, TX</div>
+        <div style="margin-top: 1rem; font-family: var(--mono); font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); background: var(--gold-pale); display: inline-block; padding: .3rem .7rem;">9% → 41% Conversion</div>
+      </div>
+
+      <div class="testi-card reveal reveal-delay-3">
+        <div class="testi-mark">"</div>
+        <p class="testi-quote">"I was skeptical about AI feeling impersonal for a luxury practice. What I got instead was a system that greets patients by name, references their treatment history, and follows up with more consistency than any human team I've managed. Our reviews went up. Our no-shows went down."</p>
+        <div class="gold-rule-left" style="margin-bottom: 1rem;"></div>
+        <div class="testi-author">Sophia Alvarez, MD</div>
+        <div class="testi-author testi-role">Owner, Aria Skin & Body Studio — Miami, FL</div>
+        <div style="margin-top: 1rem; font-family: var(--mono); font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); background: var(--gold-pale); display: inline-block; padding: .3rem .7rem;">No-shows −38%</div>
+      </div>
+
+    </div>
+
+    <!-- Trust badges row -->
+    <div class="reveal" style="margin-top: 3rem; display: flex; align-items: center; justify-content: center; gap: 3rem; flex-wrap: wrap;">
+      <div style="text-align: center;">
+        <div style="font-family: var(--display); font-size: 1.8rem; font-weight: 700; color: var(--gold);">50+</div>
+        <div style="font-family: var(--mono); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--white-dim);">Med Spas Served</div>
+      </div>
+      <div style="width: 1px; height: 40px; background: var(--border-white);"></div>
+      <div style="text-align: center;">
+        <div style="font-family: var(--display); font-size: 1.8rem; font-weight: 700; color: var(--gold);">$4.2M</div>
+        <div style="font-family: var(--mono); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--white-dim);">Revenue Recovered</div>
+      </div>
+      <div style="width: 1px; height: 40px; background: var(--border-white);"></div>
+      <div style="text-align: center;">
+        <div style="font-family: var(--display); font-size: 1.8rem; font-weight: 700; color: var(--gold);">98%</div>
+        <div style="font-family: var(--mono); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--white-dim);">Client Retention Rate</div>
+      </div>
+      <div style="width: 1px; height: 40px; background: var(--border-white);"></div>
+      <div style="text-align: center;">
+        <div style="font-family: var(--display); font-size: 1.8rem; font-weight: 700; color: var(--gold);">14 days</div>
+        <div style="font-family: var(--mono); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--white-dim);">Avg. Time to First ROI</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SECTION 6 — FOOTER / SCARCITY CTA
+═══════════════════════════════════════════ -->
+<footer id="audit">
+  <div class="max-w-7xl mx-auto px-8" style="padding-top: 7rem; padding-bottom: 5rem;">
+
+    <!-- Main CTA block -->
+    <div style="text-align: center; margin-bottom: 5rem;">
+
+      <div class="reveal" style="margin-bottom: 1.5rem; display: flex; justify-content: center;">
+        <div class="scarcity">
+          <span class="scarcity-dot"></span>
+          Only 3 Audit Slots Remaining This Month
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-1" style="margin-bottom: 1.5rem;">
+        <h2 style="font-family: var(--display); font-size: clamp(2.8rem, 7vw, 6.5rem); font-weight: 900; text-transform: uppercase; letter-spacing: .03em; line-height: .92;">
+          Stop Leaving<br/>
+          <span class="gold-gradient">Revenue</span><br/>
+          On The Table.
+        </h2>
+      </div>
+
+      <div class="reveal reveal-delay-2" style="max-width: 560px; margin: 0 auto 3rem;">
+        <p style="font-family: var(--serif); font-size: 1.2rem; color: var(--white-dim); font-style: italic; line-height: 1.7;">
+          In a free 30-minute Automation Audit, we will map exactly where your practice is losing revenue — and show you, in writing, what an AI Concierge System would recover. No obligation. No pitch deck. Just numbers.
+        </p>
+      </div>
+
+      <div class="reveal reveal-delay-3" style="display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem;">
+        <a href="mailto:hello@elevatedgrowth.co" class="btn-primary" style="font-size: .85rem; padding: 1.3rem 3rem;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Start Your Automation Audit
+        </a>
+      </div>
+
+      <div class="reveal reveal-delay-4">
+        <span style="font-family: var(--mono); font-size: .65rem; letter-spacing: .14em; text-transform: uppercase; color: var(--white-dim);">No long-term contracts. No setup fees. Results guaranteed in writing.</span>
+      </div>
+
+    </div>
+
+    <div class="gold-rule" style="margin-bottom: 3rem;"></div>
+
+    <!-- Footer bottom -->
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem;">
+      <div>
+        <div class="nav-logo" style="font-size: 1.1rem; margin-bottom: .4rem;">Elevated Growth<span style="color: var(--gold);">,</span> Co.</div>
+        <div style="font-family: var(--mono); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--white-dim);">AI Concierge Systems for Premium Med Spas</div>
+      </div>
+
+      <div style="display: flex; gap: 2.5rem; flex-wrap: wrap;">
+        <a href="#gap" class="nav-link" style="font-family: var(--mono); font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; color: var(--white-dim); text-decoration: none; transition: color .2s;">The Problem</a>
+        <a href="#solution" class="nav-link" style="font-family: var(--mono); font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; color: var(--white-dim); text-decoration: none; transition: color .2s;">The System</a>
+        <a href="#roi" class="nav-link" style="font-family: var(--mono); font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; color: var(--white-dim); text-decoration: none; transition: color .2s;">ROI</a>
+        <a href="#trust" class="nav-link" style="font-family: var(--mono); font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; color: var(--white-dim); text-decoration: none; transition: color .2s;">Results</a>
+      </div>
+
+      <div style="font-family: var(--mono); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--white-dim);">
+        © 2026 Elevated Growth, Co. All Rights Reserved.
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════ -->
+<script>
+/* ── CUSTOM CURSOR ── */
+const dot  = document.getElementById('cursor-dot');
+const ring = document.getElementById('cursor-ring');
+let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+function animateCursor() {
+  dot.style.left  = mouseX + 'px';
+  dot.style.top   = mouseY + 'px';
+  ringX += (mouseX - ringX) * 0.12;
+  ringY += (mouseY - ringY) * 0.12;
+  ring.style.left = ringX + 'px';
+  ring.style.top  = ringY + 'px';
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    dot.style.width = '20px'; dot.style.height = '20px';
+    ring.style.width = '52px'; ring.style.height = '52px'; ring.style.opacity = '.8';
+  });
+  el.addEventListener('mouseleave', () => {
+    dot.style.width = '8px'; dot.style.height = '8px';
+    ring.style.width = '32px'; ring.style.height = '32px'; ring.style.opacity = '.5';
+  });
+});
+
+/* ── NAV SCROLL ── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+/* ── SCROLL REVEAL ── */
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => revealObserver.observe(el));
+
+/* ── ROI BARS ANIMATE ── */
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.calc-bar-fill').forEach(bar => bar.classList.add('animate'));
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.midnight-card, .glass-card').forEach(el => barObserver.observe(el));
+
+/* ── ACCENT LINE REVEAL ── */
+const accentLines = document.querySelectorAll('.accent-line');
+const lineObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('revealed'); });
+}, { threshold: .5 });
+accentLines.forEach(el => lineObserver.observe(el));
+
+/* ── MARQUEE PAUSE ON HOVER ── */
+const marquee = document.getElementById('marquee');
+if (marquee) {
+  marquee.parentElement.addEventListener('mouseenter', () => marquee.style.animationPlayState = 'paused');
+  marquee.parentElement.addEventListener('mouseleave', () => marquee.style.animationPlayState = 'running');
+}
+
+/* ── SMOOTH HOVER NAV LINKS ── */
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('mouseenter', () => link.style.color = 'var(--gold)');
+  link.addEventListener('mouseleave', () => link.style.color = '');
+});
+</script>
+
+</body>
+</html>
